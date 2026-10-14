@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VS Code → Zed Theme Converter</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>"
+    />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>VS&nbsp;Code → Zed <span class="accent">Theme Converter</span></h1>
+      <p class="tagline">
+        Drop a <code>.vsix</code> or theme <code>.json</code> — get a Zed theme
+        file. Runs entirely in your browser; nothing is uploaded anywhere.
+      </p>
+    </header>
+
+    <main>
+      <!-- Drop zone -->
+      <div
+        id="dropzone"
+        class="dropzone"
+        tabindex="0"
+        role="button"
+        aria-label="Upload a theme file"
+      >
+        <div class="dropzone-inner">
+          <div class="dropzone-icon">⬇</div>
+          <div class="dropzone-text">
+            <strong>Drop a .vsix or .json here</strong>
+            <span>or click to choose a file</span>
+          </div>
+        </div>
+        <input id="fileInput" type="file" accept=".vsix,.json" hidden />
+      </div>
+
+      <div id="status" class="status"></div>
+
+      <!-- Options -->
+      <section id="options" class="options" hidden>
+        <h2>Options</h2>
+        <div class="field-row">
+          <label class="field">
+            <span>Display name</span>
+            <input id="optName" type="text" placeholder="(theme name)" />
+          </label>
+          <label class="field">
+            <span>Author</span>
+            <input id="optAuthor" type="text" placeholder="auto" />
+          </label>
+        </div>
+        <div class="field-row">
+          <label class="field">
+            <span>Force appearance</span>
+            <select id="optAppearance">
+              <option value="">auto-detect</option>
+              <option value="dark">dark</option>
+              <option value="light">light</option>
+            </select>
+          </label>
+        </div>
+        <div class="field">
+          <span
+            >Style overrides
+            <em>(click the colour square to choose, or type a hex value)</em></span
+          >
+          <div class="ov-toolbar">
+            <span id="ovCount" class="ov-count">0 overridden</span>
+            <button id="ovReset" type="button" class="btn ghost small">Reset all</button>
+          </div>
+          <div id="overridesList" class="overrides-list">
+            <div class="ov-empty">Load a theme to see its colors.</div>
+          </div>
+          <details class="advanced">
+            <summary>Advanced — raw <code>key=#color</code> lines</summary>
+            <textarea
+              id="optOverrides"
+              rows="3"
+              placeholder="icon.accent=#88C0D0&#10;status_bar.background=#0d0e12"
+            ></textarea>
+          </details>
+        </div>
+        <button id="convertBtn" class="btn primary">Convert →</button>
+      </section>
+
+      <!-- Result -->
+      <section id="result" class="result" hidden>
+        <div class="result-head">
+          <h2>Result</h2>
+          <button id="downloadBtn" class="btn primary">Download .json</button>
+        </div>
+        <div id="themes" class="themes"></div>
+        <p class="hint">
+          Save the file to <code>~/.config/zed/themes/</code> (Linux/macOS) or
+          <code>%APPDATA%\Zed\themes\</code> (Windows), then pick it in Zed's
+          theme selector — or ship it in an extension under
+          <code>themes/</code>.
+        </p>
+      </section>
+    </main>
+
+    <!-- JSZip for in-browser VSIX (zip) extraction -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Classic scripts (work over file:// too). converter.js must load first. -->
+    <script src="js/converter.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="200" viewBox="0 0 880 200" role="img" aria-label="VS Code to Zed Theme Converter — try it live">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="880" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#11141c"/>
+      <stop offset="1" stop-color="#1c2333"/>
+    </linearGradient>
+  </defs>
+
+  <!-- panel -->
+  <rect width="880" height="200" rx="20" fill="url(#bg)"/>
+  <rect x="0.75" y="0.75" width="878.5" height="198.5" rx="19.25" fill="none" stroke="#2b3247" stroke-width="1.5"/>
+
+  <!-- source icon: VS Code -->
+  <rect x="44" y="62" width="76" height="76" rx="18" fill="#007ACC"/>
+  <text x="82" y="109" font-family="'Cascadia Code','Consolas',monospace" font-size="30" font-weight="700" fill="#ffffff" text-anchor="middle">&lt;/&gt;</text>
+
+  <!-- arrow -->
+  <path d="M132 100 H166 M155 88 L169 100 L155 112" fill="none" stroke="#7f89a3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- target icon: Zed -->
+  <rect x="180" y="62" width="76" height="76" rx="18" fill="#182136" stroke="#394562" stroke-width="1.5"/>
+  <path d="M206 86 H232 L214 100 H232 L206 118 H230" fill="none" stroke="#4f9dff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- title -->
+  <text x="288" y="94" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="38" font-weight="700" fill="#eef1f7">VS Code <tspan fill="#7f89a3">→</tspan> Zed</text>
+  <text x="290" y="124" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="5" fill="#8b93a7">THEME  CONVERTER</text>
+
+  <!-- palette dots (Nord-ish palette) -->
+  <g>
+    <circle cx="292" cy="158" r="8" fill="#81a1c1"/>
+    <circle cx="314" cy="158" r="8" fill="#a3be8c"/>
+    <circle cx="336" cy="158" r="8" fill="#8fbcbb"/>
+    <circle cx="358" cy="158" r="8" fill="#b48ead"/>
+    <circle cx="380" cy="158" r="8" fill="#88c0d0"/>
+    <circle cx="402" cy="158" r="8" fill="#ebcb8b"/>
+  </g>
+
+  <!-- live badge -->
+  <rect x="428" y="142" width="150" height="32" rx="16" fill="#13273f" stroke="#2f6fb0" stroke-width="1.5"/>
+  <circle cx="450" cy="158" r="5" fill="#4ade80"/>
+  <text x="466" y="163" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#9ecbff">Try it live →</text>
+</svg>

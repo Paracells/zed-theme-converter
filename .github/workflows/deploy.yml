@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+# Deploy the static converter to GitHub Pages on every push to main.
+on:
+  push:
+    branches: [main]
+  # Allow manual runs from the Actions tab.
+  workflow_dispatch:
+
+# Required permissions for the Pages deployment token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deployments at once; don't cancel an in-flight one either.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # No build step — this is a plain static site. Upload as-is.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
